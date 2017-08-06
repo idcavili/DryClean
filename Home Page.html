@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>Home Page</title>
+  <style>
+th.header{
+background: black none repeat scroll 0% 50%;
+color: white; -moz-background-clip: initial;
+border-left:0px blue;
+border-right:1px solid;
+border-top:0px;
+padding:4px 2px;
+-moz-background-origin: initial;
+-moz-background-inline-policy: initial;
+}
+.table tr:nth-child(odd){
+background: gray;
+}
+.table tr:nth-child(even){
+bg-color: white;
+}
+  </style>
+</head>
+<script language="Javascript" type="text/javascript">
+function add(){
+document.getElementById("form").style.display = "none";
+}
+function showAdd(){
+var table = document.getElementById("table");
+table.style.display = "none";
+var addForm = document.getElementById("add");
+addForm.style.display = "block";
+}
+
+</script>
+<body>
+Name&nbsp;<input name="Name"><button name="Search">Search</button>
+<br>
+Phone&nbsp;<input name="Phone">
+<br>
+<button name="Add" onclick="showAdd()">Add</button>
+<br>
+<br>
+<table class="table"
+ style="text-align: left; width: 313px; height: 131px;"
+ border="0" cellpadding="2" cellspacing="2" id="table">
+  <thead>
+  <tr style="height: 12px; overflow: auto;">
+    <th class="header">Name</th>
+    <th class="header">Phone</th>
+    <th class="header">Email</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="javascript:void(0)">Bob</a></td>
+      <td>669-669-6969</td>
+      <td>bob@bob.com</td>
+    </tr>
+    <tr>
+      <td>Joe</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+    	<td>Jim</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
