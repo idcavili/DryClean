@@ -24,14 +24,79 @@ bg-color: white;
   </style>
 </head>
 <script language="Javascript" type="text/javascript">
+var searchBtn = document.getElementById("Search");
+var addBtn = document.getElementById("Add");
+function searchByName(){
+  var name = document.getElementById("name").textContent;
+  var req = new HMLHttpRequest();
+  req.onLoad = function(){
+    if(this.status == 200){
+    populateTable(this.responseText);
+    }
+  }
+  req.open("GET", "/api/customers?name=" + name, true);
+  req.send();
+}
+function searchByPhone(){
+  var phone = document.getElementById("phone").textContent;
+  var req = new HMLHttpRequest();
+  req.onLoad = function(){
+    if(this.status == 200){
+      populateTable(this.responseText);
+    }
+  }
+  req.open("GET", "/api/customers?phone=" + phone, true);
+  req.send();
+}
+function populateTable(data){
+  var data = json.parse(data);
+  for(var i=0;i<data.length;i++){
+    var row = document.createElement("tr");
+    var name = document.createElement("td");
+    var a = document.createElement("a");
+    a.href = "javascript:void(0)";
+    a.onClick = "loadCustomer(data[i].id)";
+    a.appendChild(document.createTextNode(data[i].name));
+    name.appendChild(a);
+    row.appendChild(name);
+    var phone = document.createElement("td");
+    phone.appendChild(document.createTextNode(data[i].phone));
+    row.appendChild(phone);
+    var email = document.createElement("td");
+    var a = document.createElement("a");
+    a.href = "mailto:" + data[i].email;
+    a.appendChild(document.createTextNode(data[i].email));
+    email.appendChild(email);
+    row.appendChild(email);
+    table.appendChild(row);
+  }
+}
+function loadCustomer(id){
+  clearTable();
+  setTableHeader(["id","name","date"]);
+  for(var i=0;i<data.length'i++){
+    var row = document.createElement("tr");
+    var orderId = document.createElement("td");
+    var a = document.createElement("a");
+    a.href = "javascript.void(0)";
+    a.onClick = "loadOrder(data[i].id)";
+  }
+}
+function clearTable(){
+  var table = document.getElementById("table");
+  for(var i=0;i<table.childElementCount;i++){
+    table.removeChild(table.childNodes[i]);
+  }
+}
+
 function add(){
-document.getElementById("form").style.display = "none";
+  document.getElementById("form").style.display = "none";
 }
 function showAdd(){
-var table = document.getElementById("table");
-table.style.display = "none";
-var addForm = document.getElementById("add");
-addForm.style.display = "block";
+  var table = document.getElementById("table");
+  table.style.display = "none";
+  var addForm = document.getElementById("add");
+  addForm.style.display = "block";
 }
 
 </script>
