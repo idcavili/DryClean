@@ -39,7 +39,7 @@ function searchByName(){
 }
 function searchByPhone(){
   var phone = document.getElementById("phone").textContent;
-  var req = new HMLHttpRequest();
+  var req = new XMLHttpRequest();
   req.onLoad = function(){
     if(this.status == 200){
       populateTable(this.responseText);
@@ -98,6 +98,12 @@ function showAdd(){
   var addForm = document.getElementById("add");
   addForm.style.display = "block";
 }
+  function addCustomer(){
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var email = document.getElementById("email").value;
+    var req = new XMLHttpRequest();
+    
 
 </script>
 <body>
@@ -134,5 +140,11 @@ Phone&nbsp;<input name="Phone">
     </tr>
   </tbody>
 </table>
+<form id="add">
+  Name:&nbsp;<input id="name">
+  Phone:&nbsp;<input id="phone">
+  Email:&nbsp;<input id="email">
+  <button id="add" onclick="addCustomer()">Add</button>
+  <button id="cancel" onclick="cancelAdd()">Cancel</button>
 </body>
 </html>
