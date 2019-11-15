@@ -122,7 +122,7 @@ function cancelAdd(){
       }
     }
     req.open("POST", "api/customers");
-    req.send();
+    req.send(json.stringify({"name":name, "phone":phone, "email":email}));
   }
     
 
