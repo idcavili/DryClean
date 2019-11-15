@@ -105,6 +105,12 @@ function showAdd(){
   var addForm = document.getElementById("add");
   addForm.style.display = "block";
 }
+function cancelAdd(){
+  var table = document.getElementById("table");
+  table.style.display = "block";
+  var addForm = document.getElementById("add");
+  addForm.style.display = "none";
+}
   function addCustomer(){
     var name = document.getElementById("name").value;
     var phone = document.getElementById("phone").value;
