@@ -26,6 +26,7 @@ th.header{
 <script language="Javascript" type="text/javascript">
 var searchBtn = document.getElementById("Search");
 var addBtn = document.getElementById("Add");
+var tbody = document.getElementById("tbody"); 
 function searchByName(){
   var name = document.getElementById("name").textContent;
   var req = new HMLHttpRequest();
@@ -68,7 +69,7 @@ function populateTable(data){
     a.appendChild(document.createTextNode(data[i].email));
     email.appendChild(a);
     row.appendChild(email);
-    table.appendChild(row);
+    tbody.appendChild(row);
   }
 }
 function loadCustomer(id){
@@ -109,6 +110,14 @@ function showAdd(){
     var phone = document.getElementById("phone").value;
     var email = document.getElementById("email").value;
     var req = new XMLHttpRequest();
+    req.onLoad = function(){
+      if(this.status == 200){
+        loadCustomer(this.responseBody.id)
+      }
+    }
+    req.open("POST", "api/customers");
+    req.send();
+  }
     
 
 </script>
@@ -123,14 +132,14 @@ Phone&nbsp;<input name="Phone">
 <table class="table"
  style="text-align: left; width: 313px; height: 131px;"
  border="0" cellpadding="2" cellspacing="2" id="table">
-  <thead>
+  <thead id="thead">
   <tr style="height: 12px; overflow: auto;">
     <th class="header">Name</th>
     <th class="header">Phone</th>
     <th class="header">Email</th>
   </tr>
   </thead>
-  <tbody>
+  <tbody id="tbody">
     <tr>
       <td><a href="javascript:void(0)">Bob</a></td>
       <td>669-669-6969</td>
