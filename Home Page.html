@@ -55,7 +55,7 @@ function populateTable(data){
     var name = document.createElement("td");
     var a = document.createElement("a");
     a.href = "javascript:void(0)";
-    a.onClick = "loadCustomer(data[i].id)";
+    a.onClick = "loadCustomer(" + data[i].id + ")";
     a.appendChild(document.createTextNode(data[i].name));
     name.appendChild(a);
     row.appendChild(name);
@@ -66,7 +66,7 @@ function populateTable(data){
     var a = document.createElement("a");
     a.href = "mailto:" + data[i].email;
     a.appendChild(document.createTextNode(data[i].email));
-    email.appendChild(email);
+    email.appendChild(a);
     row.appendChild(email);
     table.appendChild(row);
   }
@@ -79,7 +79,13 @@ function loadCustomer(id){
     var orderId = document.createElement("td");
     var a = document.createElement("a");
     a.href = "javascript.void(0)";
-    a.onClick = "loadOrder(data[i].id)";
+    a.onClick = "loadOrder(" + data[i].id + ")";
+    a.appendChild(document.createTextNode(data[i].id));
+    orderId.appendChild(a);
+    row.appendChild(orderId);
+    var date = document.createElement("td");
+    date.appendChild(document.createTextNode(data[i].date));
+    row.appendChild(date);
   }
 }
 function clearTable(){
