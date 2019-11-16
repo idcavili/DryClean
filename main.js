@@ -26,7 +26,7 @@ app.get('/api/customers', function(req, res, next){
 			res.statusCode = 500;
 			return res.json({errors:"Server Error"});
 		}
-		res.send(result);
+		res.json(result);
 	});
 });
 app.get('/api/customers/:id', function(req, res, next){
@@ -40,7 +40,7 @@ app.get('/api/customers/:id', function(req, res, next){
 			res.statusCode = 500;
 			return res.json({errors:"Server Error"});
 		}
-		res.send(result);
+		res.json(result);
 	});
 });
 app.get('/api/orders/:customerid', function(req, res, next){
@@ -53,7 +53,7 @@ app.get('/api/orders/:customerid', function(req, res, next){
 			res.statusCode = 500;
 			return res.json({errors:"Server Error"});
 		}
-		res.send(result);
+		res.json(result);
 	});
 });
 app.get('/api/orders/:id', function(req, res, next){
@@ -66,7 +66,7 @@ app.get('/api/orders/:id', function(req, res, next){
 			res.statusCode = 500;
 			return res.json({errors:"Server Error"});
 		}
-		res.send(result);
+		res.json(result);
 	});
 });
 app.get('/api/items/:orderid', function(req, res, next){
@@ -79,7 +79,7 @@ app.get('/api/items/:orderid', function(req, res, next){
 			res.statusCode = 500;
 			return res.json({errors:"Server Error"});
 		}
-		res.send(result);
+		res.json(result);
 	});
 });
 app.get('/api/items/id/:id', function(req, res, next){
@@ -92,7 +92,7 @@ app.get('/api/items/id/:id', function(req, res, next){
 			res.statusCode = 500;
 			return res.json({errors:"Server Error"});
 		}
-		res.send(result);
+		res.json(result);
 	});
 });
 app.post('api/customers', function(req, res, next){
