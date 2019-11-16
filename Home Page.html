@@ -121,7 +121,7 @@ function cancelAdd(){
         loadCustomer(this.responseBody.id)
       }
     }
-    req.open("POST", "api/customers");
+    req.open("POST", "api/customers", true);
     req.send(json.stringify({"name":name, "phone":phone, "email":email}));
   }
     
